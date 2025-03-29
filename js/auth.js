@@ -18,18 +18,30 @@ function login() {
 }
 
 function checkAuth() {
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = localStorage.getItem("user");
 
     if (!user) {
         window.location.href = "login.html"; // Si no está autenticado, redirigir a login
+    } else {
+        try {
+            const userData = JSON.parse(user);
+            if (!userData.username || !userData.role) {
+                throw new Error("Datos corruptos en localStorage");
+            }
+        } catch (error) {
+            console.error("Error en autenticación:", error);
+            localStorage.clear();
+            window.location.href = "login.html";
+        }
     }
 }
+
 function logout() {
-    localStorage.removeItem("user"); // Eliminar usuario de sesión
+    localStorage.removeItem("user");
     setTimeout(() => {
-        window.location.href = "login.html"; // Redirigir al login después de 0.5 segundos
+        window.location.href = "login.html";
     }, 500);
 }
 
-
-// Llamamos a esta función en cada página donde se necesite autenticación
+// Verifica autenticación al cargar cualquier página protegida
+document.addEventListener("DOMContentLoaded", checkAuth);
