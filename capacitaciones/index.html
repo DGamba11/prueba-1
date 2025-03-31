@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../css/styles.css">
     <!-- Scripts JS -->
     <script src="../js/auth.js" defer></script>
-    <script src="../js/sheets.js" defer></script> <!-- Agregado el script para Google Sheets -->
 </head>
 <body>
 
@@ -27,13 +26,19 @@
     <div class="container">
         <h1>Capacitaciones - Mejora Continua</h1>
         
-        <!-- Aquí se cargarán los archivos de mejora continua desde Google Sheets -->
-        <div id="file-container"></div>
+        <!-- Aquí se agregarán los enlaces estáticos de los archivos -->
+        <div id="file-container">
+            <div class="file-item">
+                <p><strong>Curso de Mejora Continua 1</strong></p>
+                <a href="https://link_del_archivo_1" target="_blank">Abrir PDF</a>
+            </div>
+            <div class="file-item">
+                <p><strong>Curso de Mejora Continua 2</strong></p>
+                <a href="https://link_del_archivo_2" target="_blank">Abrir PDF</a>
+            </div>
+            <!-- Agregar más enlaces según sea necesario -->
+        </div>
     </div>
 
-    <script>
-        // Ejecutar la función para cargar los datos desde Google Sheets cuando la página se cargue
-        document.addEventListener("DOMContentLoaded", fetchData);
-    </script>
 </body>
 </html>
