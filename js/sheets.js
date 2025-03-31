@@ -7,26 +7,23 @@ const sheetUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=
 // Función para obtener los datos de Google Sheets
 async function fetchData() {
     try {
-        // Realizamos la solicitud al API de Google Sheets
         const response = await fetch(sheetUrl);
         const text = await response.text();
-        
-        // Limpiamos la respuesta JSON
+        console.log("Respuesta de Google Sheets:", text); // Para ver qué estás obteniendo
         const json = JSON.parse(text.substr(47).slice(0, -2)); // Limpia la respuesta JSON
 
-        // Procesamos las filas de la hoja de cálculo
         const data = json.table.rows.map(row => ({
             nombre: row.c[0].v, // Columna A - Nombre
             enlace: row.c[1].v, // Columna B - Enlace
             tipo: row.c[2].v     // Columna C - Tipo
         }));
 
-        // Llamamos a la función para mostrar los datos
         displayData(data);
     } catch (error) {
         console.error("Error al obtener datos de Google Sheets:", error);
     }
 }
+
 
 // Función para mostrar los datos obtenidos
 function displayData(data) {
