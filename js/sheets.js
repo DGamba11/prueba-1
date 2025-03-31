@@ -1,5 +1,5 @@
 const sheetId = "1EDvVcLqVJro8EUkuYeCOVnXz2qWH3IWc0IJ0rWpys64";
-const sheetUrl = `https://docs.google.com/spreadsheets/d/${1EDvVcLqVJro8EUkuYeCOVnXz2qWH3IWc0IJ0rWpys64}/gviz/tq?tqx=out:json`;
+const sheetUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`;
 
 async function fetchData() {
     try {
