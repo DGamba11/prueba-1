@@ -46,9 +46,6 @@ function logout() {
 }
 
 // Verifica autenticación al cargar cualquier página protegida
-document.addEventListener("DOMContentLoaded", function () {
-    if (window.location.pathname.includes("index.html")) {
-        checkAuth(); // Solo ejecuta checkAuth en index.html
-    }
-});
+document.addEventListener("DOMContentLoaded", checkAuth);
+
 
