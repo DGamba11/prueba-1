@@ -11,11 +11,13 @@ function login() {
 
     if (users[username] && users[username].password === password) {
         localStorage.setItem("user", JSON.stringify({ username, role: users[username].role }));
+        localStorage.setItem("loggedIn", "true"); // Agrega esto para que index.html lo detecte
         window.location.href = "index.html"; // Redirigir a la página principal
     } else {
         errorMessage.textContent = "Usuario o contraseña incorrectos.";
     }
 }
+
 
 function checkAuth() {
     const user = localStorage.getItem("user");
